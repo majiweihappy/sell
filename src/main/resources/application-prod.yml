@@ -1,0 +1,61 @@
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+##  path: E:\software\myworkspace\logs\sell
+#  file: E:\software\myworkspace\logs\sell\sell.log
+#  level:
+#    com.imooc.sell.LoggerTest: debug
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.3.113/sell?characterEncoding=utf-8&useSSL=false
+  #全局配置,json返回时属性为null则该属性不返回
+
+  jackson:
+    default-property-inclusion: non_null
+
+  redis:
+    host: 192.168.3.113
+    port: 6379
+#    password:
+
+server:
+  context-path: /sell #url的前缀，加上项目名称
+
+
+wechat:
+  #微信授权
+  mpAppId: wx586bdc49715f1780
+  mpAppSecret: 38b0b20a699dbe53814cd18513927fe8
+
+  #微信支付
+#  mpAppId: wxd898fcb01713c658
+#  mpAppSecret:
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath: E:\学习\workspace\IDEA\sell\src\main\resources\static\cert\h5.p12
+  notifyUrl: http://majiwei.natapp1.cc/sell/pay/notify
+
+  #微信登录
+  openAppId: wx6ad144e54af67d87
+  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e
+
+  #消息推送
+  templateId:
+    orderStatus: ZjL3dQEW7TvA3sOxjtW8K6mcL2gyAwpmFVNQj_kjHTg
+
+projectUrl:
+  wechatMpAuthorize: http://majiwei.natapp1.cc
+  wechatOpenAuthorize: http://majiwei.natapp1.cc
+  sell: http://majiwei.natapp1.cc
+
+#设置mapper包的日志级别，会打印出sql语句（开发使用，生产环境不这样配置）
+logging:
+  level:
+    com.imooc.sell.dataobject.mapper: trace
+
+#指明mybatis配置文件路径
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
